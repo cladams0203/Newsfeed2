@@ -148,9 +148,12 @@ function articles(title, date, first, second, third) {
 }
 const articleContainer = document.querySelector('.articles')
 
-data.forEach((e) => {
-  articleContainer.appendChild(
-  articles(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph)
-  )
+const artdata = data.map((e) => {
+  return articles(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph)
 })
+artdata.forEach((e) => {
+  articleContainer.appendChild(e)
+})
+
+
 
