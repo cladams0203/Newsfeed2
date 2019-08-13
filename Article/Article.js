@@ -89,7 +89,8 @@ const data = [
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -112,3 +113,44 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+
+function articles(title, date, first, second, third) {
+  const artDiv = document.createElement('div')
+  const heading = document.createElement('h2')
+  const dateP = document.createElement('p')
+  const firstP = document.createElement('p')
+  const secondP = document.createElement('p')
+  const thirdP = document.createElement('p')
+  const expandbtn = document.createElement('span')
+  artDiv.classList.add('article')
+  firstP.classList.add('date')
+  expandbtn.classList.add('expandButton')
+  heading.textContent = title
+  dateP.textContent = date
+  firstP.textContent = first
+  secondP.textContent = second
+  thirdP.textContent = third
+  expandbtn.textContent = 'Expand'
+
+  expandbtn.addEventListener('click', () => {
+    artDiv.classList.toggle('article-open')
+  })
+
+  artDiv.appendChild(heading)
+  artDiv.appendChild(dateP)
+  artDiv.appendChild(firstP)
+  artDiv.appendChild(secondP)
+  artDiv.appendChild(thirdP)
+  artDiv.appendChild(expandbtn)
+
+  return artDiv
+}
+const articleContainer = document.querySelector('.articles')
+
+data.forEach((e) => {
+  articleContainer.appendChild(
+  articles(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph)
+  )
+})
+
